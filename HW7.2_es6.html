@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+
+// Создание первой функции
+  function createNewUser() {
+    let newUser = {}
+    newUser.firstName = prompt("Введите Имя");
+    newUser.lastName = prompt("Введите фамилию");
+    newUser.getLogin = function(){return (this.firstName[0] + this.lastName).toLowerCase()};
+    return newUser;
+  }
+  let user1 = createNewUser();
+  console.log(user1.getLogin());
+
+// Дополнение первой функции
+  function createNewUser() {
+    let newUser = {}
+    newUser.firstName = prompt("Введите Имя");
+    newUser.lastName = prompt("Введите фамилию");
+    newUser.getLogin = function(){return (this.firstName[0] + this.lastName).toLowerCase()};
+    newUser.birthday = prompt("Введите дату рождения (дд.мм.гггг)");
+    newUser.getAge = function () {
+      return Math.floor((new Date()-new Date(this.birthday.slice(-4), this.birthday.slice(3,5)-1, this.birthday.slice(0,2)))/(1000*60*60*24*365))
+    };
+    newUser.getPassword = function(){return this.firstName[0].toUpperCase() + this.lastName.toLowerCase()+this.birthday.slice(-4)};
+    return newUser;
+  }
+  console.log(createNewUser());
+  let user2 = createNewUser();
+  console.log(user2.getAge());
+  console.log(user2.getPassword());
+
+
+</script>
+</body>
+</html>
