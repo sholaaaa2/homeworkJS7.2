@@ -16,11 +16,9 @@ class CreateNewUser {
     this.lastName = prompt("Введите фамилию");
     this.birthday = prompt("Введите дату рождения (дд.мм.гггг)");
   };
-  getLogin(){return (this.firstName[0] + this.lastName).toLowerCase()};
-  getAge() {
-    return Math.floor((new Date()-new Date(this.birthday.slice(-4), this.birthday.slice(3,5)-1, this.birthday.slice(0,2)))/(1000*60*60*24*365))
-  };
-  getPassword(){return this.firstName[0].toUpperCase() + this.lastName.toLowerCase()+this.birthday.slice(-4)};
+  getLogin = () => (this.firstName[0] + this.lastName).toLowerCase();
+  getAge = () => Math.floor((new Date()-new Date(this.birthday.slice(-4), this.birthday.slice(3,5)-1, this.birthday.slice(0,2)))/(1000*60*60*24*365));
+  getPassword = () => this.firstName[0].toUpperCase() + this.lastName.toLowerCase()+this.birthday.slice(-4);
 };
 const newUser = new CreateNewUser();
 console.log(newUser);
